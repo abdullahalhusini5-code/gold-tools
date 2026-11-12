@@ -1,0 +1,102 @@
+/* Gold Reality Check: shared styles for the English (ltr) and Arabic (rtl) pages. Logical properties
+   (inline-start, end) keep one stylesheet right in both directions. */
+:root {
+  --fg: #1d1f23; --muted: #5f6570; --bg: #f7f6f2; --panel: #ffffff; --line: #e3e1da; --grid: #ecebe6; --gold: #c9952b;
+  --ok: #2e8b57; --warn: #b07a0f; --bad: #cf4444; --series-0: #3a6fd8; --series-1: #e0782a; --field: #fbfaf7;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fg: #ecebe7; --muted: #a3a7af; --bg: #15171a; --panel: #1e2125; --line: #30343a; --grid: #2a2e33; --gold: #d9a940;
+    --ok: #4cbf7f; --warn: #e5a93a; --bad: #ef6b6b; --series-0: #6b9bf0; --series-1: #f09a55; --field: #191b1f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fg: #ecebe7; --muted: #a3a7af; --bg: #15171a; --panel: #1e2125; --line: #30343a; --grid: #2a2e33; --gold: #d9a940;
+  --ok: #4cbf7f; --warn: #e5a93a; --bad: #ef6b6b; --series-0: #6b9bf0; --series-1: #f09a55; --field: #191b1f;
+  color-scheme: dark;
+}
+/* Arabic: the system's Arabic-capable sans for every heading, as Latin serifs have no Arabic letters. */
+:root:lang(ar) { --sans: system-ui, "Segoe UI", Tahoma, "Noto Sans Arabic", "Geeza Pro", Arial, sans-serif; --serif: var(--sans); }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
+:lang(ar) body { font-size: 16px; line-height: 1.7; }
+main { max-width: 980px; margin: 0 auto; padding: 32px 16px 24px; display: flex; flex-direction: column; gap: 24px; }
+h1 { font-family: var(--serif); font-weight: 400; font-size: 34px; line-height: 1.15; margin: 0; }
+:lang(ar) h1 { font-weight: 600; line-height: 1.35; }
+h2 { font-size: 17px; font-weight: 600; margin: 0 0 10px; }
+.lead { color: var(--muted); font-size: 17px; margin: 6px 0 0; max-width: 680px; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: .02em; }
+.brand i { width: 22px; height: 22px; border-radius: 6px; background: var(--gold); display: inline-block; }
+.lang { color: var(--muted); font-size: 14px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+button { font: inherit; font-weight: 500; border-radius: 8px; padding: 9px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--fg); cursor: pointer; }
+button.primary { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible, a:focus-visible { outline: 2px solid var(--series-0); outline-offset: 2px; }
+textarea { width: 100%; min-height: 110px; font: 13px/1.4 ui-monospace, Consolas, monospace; background: var(--field); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: 10px; resize: vertical; }
+code { direction: ltr; unicode-bidi: isolate; }
+label { font-size: 14px; }
+.modes { display: grid; gap: 8px; margin: 14px 0; }
+.modes label { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
+.modes input { margin-top: 4px; }
+.modes small, .hint { color: var(--muted); font-size: 13px; display: block; }
+:lang(ar) .modes small, :lang(ar) .hint { font-size: 14px; }
+details summary { cursor: pointer; font-weight: 500; }
+.settings { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 12px; }
+.settings label { display: flex; flex-direction: column; gap: 4px; color: var(--muted); }
+.settings input[type=text] { font: inherit; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; direction: ltr; }
+:lang(ar) .settings input[type=text] { text-align: right; }
+.settings input[aria-invalid=true] { border-color: var(--bad); }
+.settings .check { flex-direction: row; align-items: center; gap: 8px; }
+.verdict { display: flex; gap: 14px; align-items: flex-start; border-radius: 12px; padding: 18px 20px; border: 1px solid var(--line); background: var(--panel); border-inline-start: 6px solid var(--muted); }
+.verdict svg { flex: none; width: 28px; height: 28px; }
+.verdict strong { display: block; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.2; }
+:lang(ar) .verdict strong { font-weight: 600; line-height: 1.4; }
+.verdict p { margin: 4px 0 0; color: var(--muted); }
+.verdict.ok { border-inline-start-color: var(--ok); } .verdict.ok svg { color: var(--ok); }
+.verdict.warn { border-inline-start-color: var(--warn); } .verdict.warn svg { color: var(--warn); }
+.verdict.bad { border-inline-start-color: var(--bad); } .verdict.bad svg { color: var(--bad); }
+.notes { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.notes li { font-size: 13.5px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.tile span { color: var(--muted); font-size: 13px; display: block; }
+.tile b { font-family: var(--serif); font-weight: 400; font-size: 26px; display: block; font-variant-numeric: tabular-nums; line-height: 1.25; }
+:lang(ar) .tile b { font-weight: 600; }
+.tile small { color: var(--muted); font-size: 12.5px; }
+.chart-wrap { position: relative; direction: ltr; }
+.chart-wrap svg { width: 100%; height: auto; display: block; }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: 13px; margin-bottom: 6px; }
+.legend i { display: inline-block; width: 16px; height: 2px; vertical-align: middle; margin-inline-end: 6px; }
+.tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; box-shadow: 0 8px 24px rgba(0,0,0,.12); white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+td { padding: 7px 0; border-bottom: 1px solid var(--line); } td:last-child { text-align: end; }
+.error { color: var(--bad); font-weight: 500; }
+footer { max-width: 980px; margin: 0 auto; padding: 0 16px 32px; color: var(--muted); font-size: 12.5px; }
+footer a { color: inherit; }
+[hidden] { display: none !important; }
+.guide { width: 100%; border-collapse: collapse; font-size: 14px; margin: 6px 0 8px; }
+.guide th { text-align: start; font-weight: 600; color: var(--muted); font-size: 13px; padding-block: 6px; padding-inline: 0 8px; border-bottom: 1px solid var(--line); }
+.guide td { text-align: start; padding-block: 7px; padding-inline: 0 8px; } .guide td:last-child { text-align: end; white-space: nowrap; }
+ul.tips { margin: 0; padding-inline-start: 20px; display: grid; gap: 6px; font-size: 14px; }
+.print-only { display: none; }
+@media print {
+  @page { margin: 14mm; }
+  :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
+    --fg: #1d1f23; --muted: #5f6570; --bg: #fff; --panel: #fff; --line: #d6d4cc; --grid: #ecebe6;
+    --ok: #2e8b57; --warn: #8a5f08; --bad: #b83232; --series-0: #3a6fd8; --series-1: #e0782a; color-scheme: light;
+  }
+  html, body { background: #fff; color: #111; }
+  #input, .no-print, .tip { display: none !important; }
+  .print-only { display: block; }
+  main { padding: 0; gap: 14px; }
+  .card, .tile, .verdict, .notes li { break-inside: avoid; box-shadow: none; }
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { h1 { font-size: 28px; } .card { padding: 16px; } .tile b { font-size: 22px; } }

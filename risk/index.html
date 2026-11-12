@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Day Risk</title>
+<meta name="description" content="How much is gold likely to move today? A free daily forecast of the size of the day's movement in XAUUSD, never its direction, with its full record.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect x=%271%27 y=%271%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%23c9952b%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<link rel="canonical" href="https://abdullahalhusini5-code.github.io/gold-tools/risk/">
+<link rel="alternate" hreflang="en" href="https://abdullahalhusini5-code.github.io/gold-tools/risk/">
+<link rel="alternate" hreflang="ar" href="https://abdullahalhusini5-code.github.io/gold-tools/risk/ar/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gold Day Risk: how much is gold likely to move today?">
+<meta property="og:description" content="Free. A daily forecast of the size of gold's movement, never its direction, shown beside what really happened.">
+<meta property="og:url" content="https://abdullahalhusini5-code.github.io/gold-tools/risk/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<main>
+  <header>
+    <div class="top"><div class="brand"><i aria-hidden="true"></i>AI Gold Brain research project</div><a class="lang" href="./ar/" hreflang="ar" lang="ar">العربية</a></div>
+    <h1>Gold Day Risk</h1>
+    <p class="lead">How much is gold likely to move today? A forecast of the size of the day's movement, never its direction. Free, and made each trading day.</p>
+  </header>
+
+  <section class="card today" aria-labelledby="today-title" aria-live="polite">
+    <h2 id="today-title">Today</h2>
+    <div id="forecast" hidden>
+      <p class="day" id="day"></p>
+      <div class="hero"><b id="hero"></b><span id="usd"></span></div>
+      <p class="level" id="level"></p>
+      <div class="tiles">
+        <div class="tile"><span>Forecast volatility for the day</span><b id="t-forecast"></b></div>
+        <div class="tile"><span>A usual day in the past month</span><b id="t-usual"></b></div>
+        <div class="tile"><span>What a plain 14-day range rule says</span><b id="t-atr"></b></div>
+      </div>
+      <p class="hint" id="made" style="margin-top:12px"></p>
+    </div>
+    <div id="none" hidden>
+      <div class="hero"><b>No forecast today</b></div>
+      <p id="none-why"></p>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="means-title">
+    <h2 id="means-title">What the number means</h2>
+    <ul>
+      <li><b>It is the size of the day's movement,</b> as a share of the price: the day's volatility, added up from every 5-minute price change. A day that ends higher and a day that ends lower count the same.</li>
+      <li><b>It says nothing about direction.</b> It cannot tell you to buy or to sell, and it is not a signal.</li>
+      <li><b>It is for comparing days.</b> A 2% day is twice as lively as a 1% day, so a stop or a position size that suits one does not suit the other.</li>
+      <li><b>It is not a range or a target.</b> Price can move more than this, and on some days it will.</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="record-title">
+    <h2 id="record-title">The record</h2>
+    <p>Every day since 5 November 2026: the forecast beside what happened. "What happened" is the day's real volatility, measured the same way. The plain rule is the common alternative: the average range of the last 14 days.</p>
+    <div class="tiles four" id="scores" hidden>
+      <div class="tile"><span>Days judged</span><b id="s-days"></b></div>
+      <div class="tile"><span>The model's average miss</span><b id="s-model"></b></div>
+      <div class="tile"><span>The plain rule's average miss</span><b id="s-atr"></b></div>
+      <div class="tile"><span>Days the model was closer</span><b id="s-closer"></b></div>
+    </div>
+    <p class="hint" id="s-note" style="margin-top:12px" hidden></p>
+    <div class="scroll" id="table" role="region" aria-labelledby="record-title" tabindex="0" hidden>
+      <table>
+        <thead><tr><th scope="col">Day</th><th scope="col" class="num">Forecast</th><th scope="col" class="num">Plain rule</th><th scope="col" class="num">What happened</th><th scope="col">Published</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="alert" id="revised" hidden></p>
+    <p class="hint" style="margin-top:12px">"Before the day ended" means the forecast was written down and published while the day was still running. "Computed later" means the same fixed model was run afterwards, for a day before this page existed or a day the note was not made, so nobody saw that number in advance. A line of the record is written once and never changed. The files: <a href="./data/record.csv">the record</a> and <a href="./data/ledger.csv">the forecasts as published</a>.</p>
+  </section>
+
+  <section class="card" aria-labelledby="how-title">
+    <h2 id="how-title">How it is made, and its limits</h2>
+    <ul>
+      <li><b>One fixed model.</b> It was fitted on gold prices up to 2019 and has not been changed since. Its file is checked by its fingerprint (<code id="sha"></code>) before every forecast.</li>
+      <li><b>Tested once, on years it had never seen.</b> On 2020 to 2026 its error was 28% lower than the plain rule's, and lower in every single year.</li>
+      <li><b>The live record is short.</b> A good test on history is not a promise. Judge the record above as it grows.</li>
+      <li><b>One broker's prices.</b> The forecast is made from an OANDA demo account's gold prices. Another broker's volatility differs a little.</li>
+      <li><b>Made a few hours into the day.</b> Gold's trading day starts at 18:05 New York time. The note is made the next morning in Europe, before London and New York trade.</li>
+      <li><b>Some days have no forecast.</b> After a holiday or a shortened session the model has no clean day to start from, and the page says so. The page does not know holidays in advance: on the holiday itself it may still show a forecast, and that day then ends with no result.</li>
+      <li><b>The same project found no way to predict direction.</b> It tested 21 trading ideas on gold and none passed its test after costs.</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="more-title">
+    <h2 id="more-title">Check your own trades</h2>
+    <p><a href="../checker/">Gold Reality Check</a> shows whether your gold trades make money after spread, slippage and overnight financing, and whether the result could be luck. Free, and it runs in your browser.</p>
+  </section>
+</main>
+<footer>Educational research, not investment advice. This page forecasts how much gold may move, not which way, and no forecast is certain. No real money is traded by this project.</footer>
+<script type="module" src="./risk.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{
+ "atr_pct": 1.22,
+ "begins": "2026-11-11T23:05:00Z",
+ "closes": "2026-11-12T22:00:00Z",
+ "day": "2026-11-12",
+ "execution_authority": "NONE",
+ "forecast_pct": 1.17,
+ "forecast_usd": 47,
+ "level": "SAME",
+ "made_at": "2026-11-12T15:21:58Z",
+ "model": "VOL1",
+ "model_sha256": "07628f29dc45ae4ff6513763b702dbb58b2535afc6e9736a5fe1e0e4a583e0e1",
+ "ratio": 0.96,
+ "record": [
+  {
+   "actual_pct": 1.83,
+   "ahead": false,
+   "atr_pct": 1.08,
+   "day": "2026-11-05",
+   "forecast_pct": 1.28
+  },
+  {
+   "actual_pct": 1.58,
+   "ahead": false,
+   "atr_pct": 1.11,
+   "day": "2026-11-06",
+   "forecast_pct": 1.47
+  },
+  {
+   "actual_pct": 1.33,
+   "ahead": false,
+   "atr_pct": 1.13,
+   "day": "2026-11-09",
+   "forecast_pct": 1.27
+  },
+  {
+   "actual_pct": 1.41,
+   "ahead": false,
+   "atr_pct": 1.17,
+   "day": "2026-11-10",
+   "forecast_pct": 1.32
+  },
+  {
+   "actual_pct": 0.92,
+   "ahead": false,
+   "atr_pct": 1.25,
+   "day": "2026-11-11",
+   "forecast_pct": 1.29
+  }
+ ],
+ "revised": [],
+ "schema": "GOLD_RISK_NOTE_V1",
+ "score": {
+  "ahead": 0,
+  "atr_miss_pct": 35.9,
+  "days": 5,
+  "model_closer": 4,
+  "model_miss_pct": 19.4
+ },
+ "status": "FORECAST",
+ "usual_pct": 1.22
+}

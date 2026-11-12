@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فحص الواقع لاستراتيجيات الذهب | Gold Reality Check</title>
+<meta name="description" content="أداة مجانية: حمّل صفقاتك على الذهب XAUUSD واعرف نتيجتها بعد الفارق السعري والانزلاق والتمويل الليلي، وهل يمكن أن تكون مجرد حظ. تعمل في متصفحك.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect x=%271%27 y=%271%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%23c9952b%27/%3E%3Cg fill=%27none%27 stroke=%27%233b2a06%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Ccircle cx=%2711%27 cy=%2711%27 r=%275%27/%3E%3Cpath d=%27M15 15l4 4%27/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css">
+<link rel="canonical" href="https://abdullahalhusini5-code.github.io/gold-tools/checker/ar/">
+<link rel="alternate" hreflang="en" href="https://abdullahalhusini5-code.github.io/gold-tools/checker/">
+<link rel="alternate" hreflang="ar" href="https://abdullahalhusini5-code.github.io/gold-tools/checker/ar/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="فحص الواقع لاستراتيجيات الذهب: هل تربح استراتيجيتك بعد التكاليف؟">
+<meta property="og:description" content="مجاني. حمّل صفقاتك على الذهب واعرف النتيجة بعد الفارق السعري والانزلاق والتمويل الليلي، وهل يمكن أن تكون مجرد حظ. يعمل في متصفحك.">
+<meta property="og:url" content="https://abdullahalhusini5-code.github.io/gold-tools/checker/ar/">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<main>
+  <header>
+    <div class="top"><div class="brand"><i aria-hidden="true"></i>مشروع أبحاث AI Gold Brain</div><a class="lang no-print" href="../" hreflang="en" lang="en">English</a></div>
+    <h1>فحص الواقع لاستراتيجيات الذهب</h1>
+    <p class="lead">هل تربح استراتيجيتك في الذهب بعد التكاليف الحقيقية، وهل يمكن أن تكون النتيجة مجرد حظ؟ حمّل قائمة بصفقاتك على XAUUSD. كل شيء يعمل داخل متصفحك، ولا تُرسل صفقاتك إلى أي مكان.</p>
+  </header>
+
+  <p class="print-only hint" id="printed"></p>
+
+  <section class="card" id="input" aria-labelledby="input-title">
+    <h2 id="input-title">صفقاتك</h2>
+    <div class="row">
+      <button type="button" id="choose">اختر ملفًا</button>
+      <input id="file" type="file" accept=".csv,.txt,.tsv,.htm,.html" hidden>
+      <button type="button" id="sample">جرّب المثال</button>
+      <button type="button" id="template">نزّل القالب</button>
+      <span class="hint" id="file-name"></span>
+    </div>
+    <p class="hint">أو الصق جدولًا في الأسفل: بأعمدة القالب (<code>open_time, close_time, side, lots, entry, exit</code>، واختياريًا <code>stop, commission, swap, profit</code>)، أو جدول <b>Positions</b> (المراكز) من تقرير السجل في MetaTrader 5. ويمكنك أيضًا اختيار ملف التقرير نفسه من MT5: في تبويب السجل انقر بزر الفأرة الأيمن واختر «كل السجل» (All History)، ثم انقر بالزر الأيمن مرة أخرى واختر «تقرير» (Report)، ثم HTML. ومن MetaTrader 4 اختر كشف الحساب: في تبويب «سجل الحساب» (Account History) انقر بالزر الأيمن واختر «كل السجل» (All History)، ثم انقر بالزر الأيمن مرة أخرى واختر «حفظ كتقرير مفصّل» (Save as Detailed Report). يُكتب الوقت بصيغة YYYY-MM-DD HH:MM أو بصيغة MT5 ‏YYYY.MM.DD HH:MM:SS. تُحسب العمولة دائمًا تكلفةً.</p>
+    <textarea id="paste" dir="ltr" aria-label="الصق صفقاتك" placeholder="open_time,close_time,side,lots,entry,exit,stop&#10;2026-03-02 10:00,2026-03-02 12:30,BUY,0.10,2900.50,2906.20,2895.00"></textarea>
+    <div class="modes" role="radiogroup" aria-label="ما نوع هذه الصفقات">
+      <label><input type="radio" name="mode" value="add" checked><span><b>صفقات اختبار تاريخي أو تجريبية أو إشارات</b><small>أضف التكاليف الواقعية: الفارق السعري والانزلاق والتمويل الليلي.</small></span></label>
+      <label><input type="radio" name="mode" value="real"><span><b>سجل حسابي الحقيقي</b><small>التكاليف داخلة في الأسعار أصلًا، وتُستخدم العمولة والسواب الموجودان في الملف.</small></span></label>
+    </div>
+    <details>
+      <summary>إعدادات التكاليف والاختبار</summary>
+      <div class="settings">
+        <label>الفارق السعري، بالدولار للأونصة<input id="spread" type="text" inputmode="decimal" value="0.48"></label>
+        <label>الانزلاق السعري، بالدولار للأونصة لكل جهة<input id="slippage" type="text" inputmode="decimal" value="0.10"></label>
+        <label>تمويل يدفعه الشراء، % سنويًا<input id="longRate" type="text" inputmode="decimal" value="5.92"></label>
+        <label>تمويل يقبضه البيع، % سنويًا<input id="shortRate" type="text" inputmode="decimal" value="3.67"></label>
+        <label>عدد الأونصات في اللوت<input id="ounces" type="text" inputmode="numeric" value="100"></label>
+        <label>عدد الاستراتيجيات التي جرّبتها قبل هذه<input id="tried" type="text" inputmode="numeric" value="1"></label>
+        <label class="check"><input id="utc" type="checkbox">أوقات ملفي بتوقيت UTC، لا بتوقيت خادم MetaTrader</label>
+      </div>
+      <p class="hint">القيم الافتراضية: فارق سعري 0.48 دولار للأونصة، وهو الوسيط المقيس عند أوقات القرار على حساب تجريبي لدى OANDA في 2025–2026 ويُستخدم حدًّا أدنى؛ والتمويل كما فرضه ذلك الحساب في 2 نوفمبر 2026 (يدفع الشراء 5.92% سنويًا ويقبض البيع 3.67%)؛ وانزلاق 0.10 دولار لكل جهة. الليلة هي كل تجديد عند الساعة 17:00 بتوقيت نيويورك، وتُحسب ثلاث ليالٍ يوم الأربعاء كما يفعل MT5 مع الذهب.</p>
+    </details>
+    <div class="row" style="margin-top:14px">
+      <button type="button" class="primary" id="run">افحص صفقاتي</button>
+      <span class="error" id="error" role="alert"></span>
+      <a id="report" class="no-print" hidden target="_blank" rel="noopener">أخبرنا أنها لم تعمل (دون إرسال ملفك)</a>
+    </div>
+  </section>
+
+  <section id="results" hidden aria-live="polite" aria-labelledby="verdict-title">
+    <div class="verdict" id="verdict">
+      <svg id="verdict-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+      <div><strong id="verdict-title"></strong><p id="verdict-text"></p></div>
+    </div>
+    <ul class="notes" id="notes"></ul>
+    <div class="row no-print" style="margin-top:12px"><button type="button" id="print">احفظ التقرير بصيغة PDF</button><span class="hint">تفتح نافذة الطباعة في متصفحك: اختر «حفظ بصيغة PDF» لتحتفظ به أو تشاركه.</span></div>
+  </section>
+
+  <section id="numbers" hidden class="tiles" aria-label="الأرقام الرئيسية"></section>
+
+  <section id="curve" hidden class="card" aria-labelledby="curve-title">
+    <h2 id="curve-title">منحنى حسابك قبل التكاليف وبعدها</h2>
+    <div class="legend"><span><i style="background:var(--series-1)"></i>قبل التكاليف</span><span><i style="background:var(--series-0)"></i>بعد التكاليف</span></div>
+    <div class="chart-wrap" id="chart"></div>
+  </section>
+
+  <section id="details" hidden class="card" aria-labelledby="details-title">
+    <h2 id="details-title">التفاصيل</h2>
+    <table id="table"></table>
+    <p class="hint" id="skipped"></p>
+  </section>
+
+  <section class="card no-print" aria-labelledby="costs-title">
+    <h2 id="costs-title">ما تأخذه التكاليف من خطط الذهب المعتادة</h2>
+    <table class="guide">
+      <thead><tr><th>الخطة</th><th>وقف الخسارة</th><th>التكاليف للصفقة</th></tr></thead>
+      <tbody>
+        <tr><td>مضاربة سريعة لمدة 15 دقيقة</td><td>من 1.15 إلى 1.25 ضعف متوسط مدى الشمعة ذات 5 دقائق، ATR(14) (الوسيط 3.36 دولار)</td><td dir="ltr">0.26 R</td></tr>
+        <tr><td>خطة 4 ساعات بوقف قريب</td><td>1.5 ضعف متوسط مدى الشمعة ذات 5 دقائق، ATR(14) (الوسيط 4.16 دولار)</td><td dir="ltr">0.21 R</td></tr>
+        <tr><td>خطة 4 ساعات بوقف أوسع</td><td>من 1.7 إلى 1.9 ضعف متوسط مدى الشمعة ذات 15 دقيقة، ATR(14) (الوسيط 9.10 دولار)</td><td dir="ltr">0.10 R</td></tr>
+      </tbody>
+    </table>
+    <p class="hint">قاسها المشروع على أسعار الذهب لدى OANDA نفسها من 11 فبراير 2024 إلى 3 نوفمبر 2026، مع جمع صفقات الشراء والبيع معًا، بالفارق السعري المقيس عند كل قرار (0.48 دولار على الأقل) وانزلاق 0.10 دولار لكل جهة، ودون تمويل ليلي. على الخطة أن تربح أكثر من ذلك في كل صفقة قبل التكاليف لمجرد أن تتعادل، وكلما ضاق وقف الخسارة كبرت حصة التكاليف.</p>
+  </section>
+
+  <section class="card no-print" aria-labelledby="seller-title">
+    <h2 id="seller-title">كيف تفحص بائع توصيات</h2>
+    <ul class="tips">
+      <li>اطلب كل الصفقات: وقت الفتح والإغلاق، والشراء أو البيع، والحجم والأسعار. الحصيلة الشهرية أو لقطات الشاشة لا يمكن التحقق منها.</li>
+      <li>حمّلها على أنها <b>صفقات اختبار تاريخي أو تجريبية أو إشارات</b>، لأن النتائج المعلنة تُعرض عادةً قبل التكاليف.</li>
+      <li>احسب كل بائع وكل استراتيجية اطّلعت عليها في خانة <b>الاستراتيجيات المجرّبة</b>. أفضل سجل بين كثيرين يبدو جيدًا بالحظ وحده.</li>
+      <li>لا تحكم على أقل من 200 صفقة: في السجل القصير قد تكون أي نتيجة مجرد حظ.</li>
+      <li>السجل الجيد ليس وعدًا. افحصه من جديد على الصفقات التي تأتي بعد أن تبدأ بالمتابعة.</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="how-title">
+    <h2 id="how-title">كيف يعمل الفحص</h2>
+    <p class="hint">تُحسب نتيجة كل صفقة من أسعارها، بعد خصم الفارق السعري والانزلاق والتمويل عن كل ليلة احتُفظ بها، أو من التكاليف الموجودة في ملفك. إذا كان لكل صفقة وقف خسارة (في ملفات القالب فقط) تُعرض النتائج بوحدة R، أي المبلغ المخاطَر به. الاحتمال هو نسبة المرات التي تحقق فيها استراتيجيةٌ بلا أفضلية حقيقية هذه النتيجة على الأقل، ويُحسب بإعادة سحب صفقاتك آلاف المرات ببذرة ثابتة، فيعطي الملف نفسه الجواب نفسه دائمًا. لا تُعد الاستراتيجية مُثبتة إلا مع 200 صفقة على الأقل، ومجال ثقة 95% فوق الصفر، واحتمال أقل من 0.05 مقسومًا على عدد الاستراتيجيات التي جرّبتها. الطريقة مأخوذة من أبحاث AI Gold Brain، حيث فشلت 21 قاعدة تداول اختُبرت بأمانة في تجاوز هذا الحد بعد التكاليف.</p>
+  </section>
+</main>
+<footer>
+  أداة تعليمية وليست نصيحة استثمارية. تصف النتائج الصفقات التي أدخلتها ولا تتنبأ بنتائج مستقبلية. لا تُرسل صفقاتك إلى أي مكان.
+  من إعداد <a href="../../">مشروع أبحاث AI Gold Brain</a> · <a href="https://github.com/abdullahalhusini5-code/gold-tools/issues">الإبلاغ عن مشكلة</a>.
+</footer>
+
+<script type="module" src="../ui.js"></script>
+</body>
+</html>

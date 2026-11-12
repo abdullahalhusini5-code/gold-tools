@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Reality Check</title>
+<meta name="description" content="Does your gold strategy make money after real costs? Check a list of XAUUSD trades in your browser: spread, slippage, overnight financing, and whether the result could be luck.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect x=%271%27 y=%271%27 width=%2722%27 height=%2722%27 rx=%276%27 fill=%27%23c9952b%27/%3E%3Cg fill=%27none%27 stroke=%27%233b2a06%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Ccircle cx=%2711%27 cy=%2711%27 r=%275%27/%3E%3Cpath d=%27M15 15l4 4%27/%3E%3C/g%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<link rel="canonical" href="https://abdullahalhusini5-code.github.io/gold-tools/checker/">
+<link rel="alternate" hreflang="en" href="https://abdullahalhusini5-code.github.io/gold-tools/checker/">
+<link rel="alternate" hreflang="ar" href="https://abdullahalhusini5-code.github.io/gold-tools/checker/ar/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gold Reality Check: does your gold strategy make money after costs?">
+<meta property="og:description" content="Free. Load your XAUUSD trades and see the result after spread, slippage and overnight financing, and whether it could be luck. Runs in your browser.">
+<meta property="og:url" content="https://abdullahalhusini5-code.github.io/gold-tools/checker/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+<main>
+  <header>
+    <div class="top"><div class="brand"><i aria-hidden="true"></i>AI Gold Brain research project</div><a class="lang no-print" href="./ar/" hreflang="ar" lang="ar">العربية</a></div>
+    <h1>Gold Reality Check</h1>
+    <p class="lead">Does your gold strategy make money after real costs, and could the result be luck? Load a list of XAUUSD trades. Everything runs in your browser: your trades are never sent anywhere.</p>
+  </header>
+
+  <p class="print-only hint" id="printed"></p>
+
+  <section class="card" id="input" aria-labelledby="input-title">
+    <h2 id="input-title">Your trades</h2>
+    <div class="row">
+      <button type="button" id="choose">Choose a file</button>
+      <input id="file" type="file" accept=".csv,.txt,.tsv,.htm,.html" hidden>
+      <button type="button" id="sample">Try the example</button>
+      <button type="button" id="template">Download the template</button>
+      <span class="hint" id="file-name"></span>
+    </div>
+    <p class="hint">Or paste a table below: the template's columns (<code>open_time, close_time, side, lots, entry, exit</code>, optional <code>stop, commission, swap, profit</code>), or the <b>Positions</b> table from MetaTrader 5's history report. You can also choose MT5's report file itself: in the History tab, right-click and choose All History, then right-click again and choose Report, then HTML. From MetaTrader 4, choose its statement: in the Account History tab, right-click and choose All History, then right-click again and choose Save as Detailed Report. Times as YYYY-MM-DD HH:MM or MT5's YYYY.MM.DD HH:MM:SS. A commission is always counted as a cost.</p>
+    <textarea id="paste" aria-label="Paste your trades" placeholder="open_time,close_time,side,lots,entry,exit,stop&#10;2026-03-02 10:00,2026-03-02 12:30,BUY,0.10,2900.50,2906.20,2895.00"></textarea>
+    <div class="modes" role="radiogroup" aria-label="What kind of trades are these">
+      <label><input type="radio" name="mode" value="add" checked><span><b>Back-test, paper or signal trades</b><small>Add realistic costs: spread, slippage and overnight financing.</small></span></label>
+      <label><input type="radio" name="mode" value="real"><span><b>My real account history</b><small>Costs are already in the prices; the file's own commission and swap are used.</small></span></label>
+    </div>
+    <details>
+      <summary>Cost and test settings</summary>
+      <div class="settings">
+        <label>Spread, USD an ounce<input id="spread" type="text" inputmode="decimal" value="0.48"></label>
+        <label>Slippage, USD an ounce each side<input id="slippage" type="text" inputmode="decimal" value="0.10"></label>
+        <label>Longs pay financing, % a year<input id="longRate" type="text" inputmode="decimal" value="5.92"></label>
+        <label>Shorts receive financing, % a year<input id="shortRate" type="text" inputmode="decimal" value="3.67"></label>
+        <label>Ounces in one lot<input id="ounces" type="text" inputmode="numeric" value="100"></label>
+        <label>Strategies you tried before settling on this one<input id="tried" type="text" inputmode="numeric" value="1"></label>
+        <label class="check"><input id="utc" type="checkbox">Times in my file are UTC, not MetaTrader server time</label>
+      </div>
+      <p class="hint">Defaults: a spread of 0.48 USD an ounce, the median measured at decision times on an OANDA demo account in 2025–26 and used as a floor; financing as that account charged on 2 November 2026 (longs pay 5.92% a year, shorts receive 3.67%); and 0.10 USD of slippage a side. A night is each 17:00 New York rollover, three on Wednesday, as MT5 charges gold.</p>
+    </details>
+    <div class="row" style="margin-top:14px">
+      <button type="button" class="primary" id="run">Check my trades</button>
+      <span class="error" id="error" role="alert"></span>
+      <a id="report" class="no-print" hidden target="_blank" rel="noopener">Tell us it did not work (without your file)</a>
+    </div>
+  </section>
+
+  <section id="results" hidden aria-live="polite" aria-labelledby="verdict-title">
+    <div class="verdict" id="verdict">
+      <svg id="verdict-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+      <div><strong id="verdict-title"></strong><p id="verdict-text"></p></div>
+    </div>
+    <ul class="notes" id="notes"></ul>
+    <div class="row no-print" style="margin-top:12px"><button type="button" id="print">Save the report as PDF</button><span class="hint">Opens your browser's print window: choose "Save as PDF" to keep or share it.</span></div>
+  </section>
+
+  <section id="numbers" hidden class="tiles" aria-label="Key numbers"></section>
+
+  <section id="curve" hidden class="card" aria-labelledby="curve-title">
+    <h2 id="curve-title">Your account curve, before and after costs</h2>
+    <div class="legend"><span><i style="background:var(--series-1)"></i>Before costs</span><span><i style="background:var(--series-0)"></i>After costs</span></div>
+    <div class="chart-wrap" id="chart"></div>
+  </section>
+
+  <section id="details" hidden class="card" aria-labelledby="details-title">
+    <h2 id="details-title">The details</h2>
+    <table id="table"></table>
+    <p class="hint" id="skipped"></p>
+  </section>
+
+  <section class="card no-print" aria-labelledby="costs-title">
+    <h2 id="costs-title">What costs take from typical gold plans</h2>
+    <table class="guide">
+      <thead><tr><th>Plan</th><th>Stop</th><th>Costs per trade</th></tr></thead>
+      <tbody>
+        <tr><td>15-minute scalp</td><td>1.15–1.25 times the average 5-minute range, ATR(14) (median $3.36)</td><td>0.26 R</td></tr>
+        <tr><td>4-hour plan, tight stop</td><td>1.5 times the average 5-minute range, ATR(14) (median $4.16)</td><td>0.21 R</td></tr>
+        <tr><td>4-hour plan, wider stop</td><td>1.7–1.9 times the average 15-minute range, ATR(14) (median $9.10)</td><td>0.10 R</td></tr>
+      </tbody>
+    </table>
+    <p class="hint">Measured by the project on OANDA's own gold prices from 11 February 2024 to 3 November 2026, buys and sells pooled, with the spread measured at each decision (at least $0.48) and $0.10 slippage a side, and no overnight financing. A plan has to earn more than this per trade before costs just to break even, and the tighter the stop, the bigger the share costs take.</p>
+  </section>
+
+  <section class="card no-print" aria-labelledby="seller-title">
+    <h2 id="seller-title">Checking a signal seller</h2>
+    <ul class="tips">
+      <li>Ask for every trade: open and close time, buy or sell, size and prices. A monthly total or screenshots cannot be checked.</li>
+      <li>Load them as <b>back-test, paper or signal trades</b>: claimed results are usually shown before costs.</li>
+      <li>Count every seller and strategy you looked at under <b>strategies tried</b>. The best of many records looks good by luck alone.</li>
+      <li>Judge nothing on fewer than 200 trades: on a short record, any result can be luck.</li>
+      <li>A good record is not a promise. Check it again on the trades made after you start following.</li>
+    </ul>
+  </section>
+
+  <section class="card" aria-labelledby="how-title">
+    <h2 id="how-title">How the check works</h2>
+    <p class="hint">Each trade's result is worked out from its prices, less the spread, slippage and financing for every night it was held, or from the costs your file already holds. With a stop on every trade (template files only), results are in R, the amount risked. The chance figure is how often a strategy with no real edge would do at least this well. It comes from re-drawing your trades thousands of times, with a fixed seed so the same file always gives the same answer. A strategy is called proven only with at least 200 trades, a 95% interval above zero, and a chance figure below 0.05 divided by the number of strategies you tried. The method comes from the AI Gold Brain research, where 21 honestly tested trading rules have all failed this bar after costs.</p>
+  </section>
+</main>
+<footer>
+  Educational tool, not investment advice. Results describe the trades you entered and do not predict future results. Your trades are never sent anywhere.
+  Made by the <a href="../">AI Gold Brain research project</a> · <a href="https://github.com/abdullahalhusini5-code/gold-tools/issues">report a problem</a>.
+</footer>
+
+<script type="module" src="./ui.js"></script>
+</body>
+</html>
